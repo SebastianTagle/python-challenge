@@ -59,7 +59,7 @@ print([f"Winner: {candidates[max_index]}"])
 print(["-------------------------------------------------"])
 
 #con esto creo el texto en el repository con el analisis
-dataout=os.path.join("C:/Users/sebat/ClassRepository/python-challenge/PyPoll/analysis/Analysis_PyPoll.csv")
+dataout=os.path.join("C:/Users/sebat/ClassRepository/python-challenge/PyPoll/analysis/Analysis_PyPoll.txt")
 with open(dataout,'w',newline='') as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=",")
     csvwriter.writerow(["Election Results"])

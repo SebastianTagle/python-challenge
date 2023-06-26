@@ -55,7 +55,7 @@ print(f"Greatest Increase in profits: (${round(max(list_change),)})")
 print(f"Greatest Decrease in profits: (${round(min(list_change),)})")
 
 #con esto creo el texto en el repository con el analisis
-dataout=os.path.join("C:/Users/sebat/ClassRepository/python-challenge/PyBank/analysis/Analysis_Pybank.csv")
+dataout=os.path.join("C:/Users/sebat/ClassRepository/python-challenge/PyBank/analysis/Analysis_Pybank.txt")
 with open(dataout,'w',newline='') as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=",")
     csvwriter.writerow(["Financial Analysis"])
