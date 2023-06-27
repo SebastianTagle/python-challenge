@@ -10,6 +10,7 @@ date_count=0
 #with this variable, i am atrying to calculate the net income and losses
 
 list_change=[]
+list_month=[]
 total_change=0
 change=0
 total_net_income=0
@@ -31,6 +32,7 @@ with open(dataopen) as csvfile:
             change=round(int(-change+float(row[1])),)
             #con esto guardo la diferencia en un arreglo 
         list_change.append(float(change))
+        list_month.append(row[0])
         #con esto guardo solo el dato anterior.
         change=float(row[1])
     
@@ -44,6 +46,9 @@ with open(dataopen) as csvfile:
     #aca calculo el promedio de los cambios.
     average=round(total_change/(date_count-1),2)
     
+    month_max=list_month[list_change.index(max(list_change))]
+    month_min=list_month[list_change.index(min(list_change))]
+
     #de prueba para ver si el calculo estaba bien.
     #print(average)    
 
@@ -51,8 +56,8 @@ with open(dataopen) as csvfile:
 print(f"Total Month: {date_count}")
 print(f"Total: ${round(int(total_net_income),0)}")
 print(f"Average Change:${float(average)}")
-print(f"Greatest Increase in profits: (${round(max(list_change),)})")
-print(f"Greatest Decrease in profits: (${round(min(list_change),)})")
+print(f"Greatest Increase in profits: {month_max} (${round(max(list_change),)})")
+print(f"Greatest Decrease in profits: {month_min} (${round(min(list_change),)})")
 
 #con esto creo el texto en el repository con el analisis
 dataout=os.path.join("C:/Users/sebat/ClassRepository/python-challenge/PyBank/analysis/Analysis_Pybank.txt")
@@ -63,5 +68,5 @@ with open(dataout,'w',newline='') as csvfile:
     csvwriter.writerow([f"Total Month: {date_count}"])
     csvwriter.writerow([f"Total: ${round(int(total_net_income),0)}"])
     csvwriter.writerow([f"Average Change:${float(average)}"])
-    csvwriter.writerow([f"Greatest Increase in profits: (${round(max(list_change),)})"])
-    csvwriter.writerow([f"Greatest Decrease in profits: (${round(min(list_change),)})"])
+    csvwriter.writerow([f"Greatest Increase in profits: {month_max} (${round(max(list_change),)})"])
+    csvwriter.writerow([f"Greatest Decrease in profits: {month_min} (${round(min(list_change),)})"])
